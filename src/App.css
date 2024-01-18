@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+body{
+  background-image: url("./assets/images/__before.png");
+  background-size: cover;
+}
+:root{
+ --sidebarWidth: 280px;
+}
+/* =====================================================
+                AUTHENTIFICATION
+===================================================== */
+#app {
+  height: 100vh;
+  background-image: url("./assets/images/_before.jpg");
+  background-size: cover;
+}
+.input{
+  border: none;
+  outline: none;
+  background-color: transparent !important;
+  border-bottom: 1px solid #333;
+}
+.input:focus{
+  box-shadow: none;
+}
+input{
+  background-color: transparent !important;
+}
+.btn{
+  background-color: #333;
+  border: none;
+}
+#connexion, #forgotPsw, #inscription{
+  height: 100vh;
+}
+.anotherAction{
+  color: #ffd964;
+  cursor: pointer;
+  background-color: transparent;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* =====================================================
+                DASHBORD
+===================================================== */
+.col-width-sidebar{
+  width: var(--sidebarWidth);
+}
+.col-width-navbar{
+  width: calc(100% - var(--sidebarWidth));
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ===================NAVBAR================================ */
+#navbar{
+  width: calc(100% - var(--sidebarWidth));
+  background-color: #fff;
+  left: calc(var(--sidebarWidth) + 12px);
+  /* left: 312px; */
+  border-bottom: 1px solid #9f9f9f;
+}
+.homeIMG, #homeIMG, .stat-img{
+  width: 40px;
+  height: 40px;
+}
+#navbar-input-container{
+  width: 250px;
+}
+#navbar-input-container button{
+  background-color: transparent !important;
+}
+#navbar-input-container button i{
+  color: #333;
+}
+#navbar-input {
+  outline: none !important;
+  width: 70%;
+  background-color: transparent;
+}
+/* ===================SIDEBAR================================ */
+#sidebar-container-parent{
+  background-image: url("./assets/images/_before.jpg");
+  background-size: cover;
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sidebar{
+  height: 100vh !important;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebarProfil{
+  border-top: 1px solid #9f9f9f;
+  position: absolute;
+  bottom: 90px;
+}
+/* =====================================================
+                  CHILDREN
+===================================================== */
+#child{
+  padding-top: 60px;
+  left: var(--sidebarWidth);
+  color: #333;
+   /* float: right;  */
+  /*top: 50px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ====================En tete=============================== */
+.entete h1{
+  font-size: 20px;
+  font-weight: normal;
+}
+/* ====================HOTEL=============================== */
+
+.hotelAdress{
+  color: #8D4B38;
+} 
+.hotelPrice, .hotelAdress{
+  font-size: 13px;
 }
