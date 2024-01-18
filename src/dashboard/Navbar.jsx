@@ -4,9 +4,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import user from "../assets/images/user.png";
 import { MdOutlineLogout } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
+import Input from "../components/formulaire/Input";
 
 const Navbar = () => {
-  // console.log(props)
   return (
     <div
       className="row justify-content-between position-fixed z-2 py-2"
@@ -24,14 +24,14 @@ const Navbar = () => {
           className="input-group border rounded-pill overflow-hidden d-flex me-2"
           id="navbar-input-container"
         >
-          <button className="btn me-2" type=" button">
+          <button className="btn me-2" type="button">
             <i class="bi bi-search my-auto me-2"></i>
           </button>
-          <input
+          <Input
             type="text"
-            className=" border-0 my-auto"
+            style="border-0 my-auto"
             autoFocus
-            placeholder="Search..."
+            placeholder="Rechercher..."
             id="navbar-input"
           />
         </div>

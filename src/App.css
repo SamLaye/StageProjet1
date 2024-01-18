@@ -1,4 +1,5 @@
 body{
+  /* font-family: Roboto; */
   background-image: url("./assets/images/__before.png");
   background-size: cover;
 }
@@ -8,7 +9,7 @@ body{
 /* =====================================================
                 AUTHENTIFICATION
 ===================================================== */
-#app {
+.auth {
   height: 100vh;
   background-image: url("./assets/images/_before.jpg");
   background-size: cover;
@@ -32,10 +33,18 @@ input{
 #connexion, #forgotPsw, #inscription{
   height: 100vh;
 }
-.anotherAction{
+.auth .anotherAction{
   color: #ffd964;
   cursor: pointer;
   background-color: transparent;
+}
+.auth .anotherLink, .anotherLinkSidebar{
+  text-decoration: none;
+  color: #ffd964;
+}
+.anotherLinkSidebar{
+  text-decoration: none;
+  color: #fff;
 }
 
 
@@ -106,6 +115,17 @@ input{
 .entete h1{
   font-size: 20px;
   font-weight: normal;
+}
+/* ====================En tete=============================== */
+.statTitle{
+  font-weight: lighter;
+}
+.statTitle span{
+  font-size: 35px;
+  font-weight: 400;
+}
+.stat .statDesc{
+  font-size: 17px;
 }
 /* ====================HOTEL=============================== */
 

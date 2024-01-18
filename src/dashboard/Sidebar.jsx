@@ -10,10 +10,12 @@ export default function Sidebar() {
     {
       MenuItemIcon: "bi-columns-gap",
       MenuItemName: "Dashbord",
+      MenuPath: "/timeline/stats",
     },
     {
       MenuItemIcon: "bi-people",
       MenuItemName: "Listes des hotels",
+      MenuPath: "/timeline/cards",
     },
   ];
   return (

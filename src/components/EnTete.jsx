@@ -1,5 +1,8 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa6";
+import Input from "./formulaire/Input";
+import FormLabel from "./formulaire/FormLabel";
+import MyButton from "./MyButton";
 
 function EnTete() {
   return (
@@ -13,19 +16,18 @@ function EnTete() {
       {/* ___________________________________  */}
       {/* <!-- Button trigger modal --> */}
       <div className="d-flex align-self-center">
-        <button
+        <MyButton
           type="button"
-          className="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        >
-          Launch modal
-        </button>
+          style="btn btn-primary"
+          dataBsToggle="modal"
+          dataBsTarget="#staticBackdrop"
+          btnLabel="Launch modal"
+        />
       </div>
 
       {/* <!-- Modal --> */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -43,126 +45,116 @@ function EnTete() {
                 <FaArrowLeft />
                 <span className="ms-2">créer un nouveau hotel</span>
               </h1>
-              <button
+              <MyButton
                 type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+                style="btn-close"
+                dataBsDismiss="modal"
+                ariaLabel="Close"
+              />
             </div>
             <div class="modal-body">
               <form action="" className="row">
-                <div class="col-6 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Nom de l'hotel
-                  </label>
-                  <input
+                <div className="col-6 mb-3 p-2">
+                  <FormLabel
+                    style="form-label text-secondary"
+                    labelFor="exampleFormControlInput1"
+                    labelName="Nom de l'hotel"
+                  />
+                  <Input
                     type="text"
-                    className="form-control"
-                    id="exampleFormControlInput1"
+                    style="form-control"
                     placeholder="name@example.com"
+                    id="exampleFormControlInput1"
                   />
                 </div>
-                <div class="col-6 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Address
-                  </label>
-                  <input
+                <div className="col-6 mb-3 p-2">
+                  <FormLabel
+                    labelFor="exampleFormControlInput1"
+                    style="form-label text-secondary"
+                    labelName="Address"
+                  />
+                  <Input
                     type="text"
-                    className="form-control"
+                    style="form-control"
                     id="exampleFormControlInput1"
-                    placeholder="name"
+                    placeholder="Adress"
                   />
                 </div>
-                <div class="col-6 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control text-secondary"
-                    id="exampleFormControlInput1"
-                    placeholder="name@example"
+                <div className="col-6 mb-3 p-2">
+                  <FormLabel
+                    labelFor="exampleFormControlInput1"
+                    style="form-label text-secondary"
+                    labelName="Email address"
                   />
-                </div>
-                <div class="col-6 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Numéro de téléphone
-                  </label>
-                  <input
+                  <Input
                     type="email"
-                    className="form-control"
+                    style="form-control text-secondary"
                     id="exampleFormControlInput1"
                     placeholder="name@example"
                   />
                 </div>
-                <div class="col-6 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Prix par nuit
-                  </label>
-                  <input
+                <div className="col-6 mb-3 p-2">
+                  <FormLabel
+                    labelFor="exampleFormControlInput1"
+                    style="form-label text-secondary"
+                    labelName="Numéro de téléphone"
+                  />
+                  <Input
                     type="email"
-                    className="form-control"
+                    style="form-control"
                     id="exampleFormControlInput1"
                     placeholder="name@example"
                   />
                 </div>
-                <div class="col-6 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Devise
-                  </label>
-                  <input
+                <div className="col-6 mb-3 p-2">
+                  <FormLabel
+                    labelFor="exampleFormControlInput1"
+                    style="form-label text-secondary"
+                    labelName="Prix par nuit"
+                  />
+                  <Input
                     type="email"
-                    className="form-control"
+                    style="form-control"
                     id="exampleFormControlInput1"
                     placeholder="name@example"
                   />
                 </div>
-                <div class="col-12 mb-3 p-2">
-                  <label
-                    for="exampleFormControlInput1"
-                    className="form-label text-secondary"
-                  >
-                    Ajouter une photo
-                  </label>
-                  <input
+                <div className="col-6 mb-3 p-2">
+                  <FormLabel
+                    labelFor="exampleFormControlInput1"
+                    style="form-label text-secondary"
+                    labelName="Devise"
+                  />
+                  <Input
                     type="email"
-                    className="form-control"
+                    style="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="name@k,,k,k,k"
+                  />
+                </div>
+                <div className="col-12 mb-3 p-2">
+                  <FormLabel
+                    labelFor="exampleFormControlInput1"
+                    className="form-label text-secondary"
+                    labelName="Ajouter une photo"
+                  />
+                  <Input
+                    type="email"
+                    style="form-control"
                     id="exampleFormControlInput1"
                     placeholder="name@example"
                   />
                 </div>
               </form>
             </div>
-            <div class="modal-footer">
-              <button
+            <div className="modal-footer">
+              <MyButton
                 type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save
-              </button>
+                style="btn btn-secondary"
+                dataBsDismiss="modal"
+                btnLabel="Close"
+              />
+              <MyButton type="button" style="btn btn-primary" btnLabel="Save" />
             </div>
           </div>
         </div>
