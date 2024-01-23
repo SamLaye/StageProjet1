@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import logoRT from "../assets/images/Link → SVG.png";
-import { Link } from "react-router-dom";
+import { message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import AuthServices from "../services/authServices";
+import { getErrorMessage } from "../utils/GetError";
 
 export default function Inscription() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const data = {
+        firstName,
+        lastName,
+        userName,
+        password,
+      };
+      const response = await AuthServices.registerUser(data);
+      console.log(response.data);
+      message.success("Macha'Allah, dallal ak diam");
+      navigate("/connexion");
+    } catch (error) {
+      console.log(error);
+      message.error(getErrorMessage(error));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="auth">
       <div className="container">
@@ -25,17 +58,29 @@ export default function Inscription() {
                   type="text"
                   className="form-control input rounded-0"
                   id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Nom"
+                  placeholder="Firstname"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div class="mb-3 w-100 mx-auto">
                 <input
-                  type="email"
+                  type="text"
                   className="form-control input rounded-0"
                   id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="E-mail"
+                  placeholder="Lastname"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+              <div class="mb-3 w-100 mx-auto">
+                <input
+                  type="text"
+                  className="form-control input rounded-0"
+                  id="exampleInputEmail1"
+                  placeholder="Username"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
               <div className="mb-3 w-100 mx-auto">
@@ -43,7 +88,9 @@ export default function Inscription() {
                   type="password"
                   className="form-control input rounded-0"
                   id="exampleInputPassword1"
-                  placeholder="Mot de passe"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="mb-3 form-check">
@@ -56,7 +103,13 @@ export default function Inscription() {
                   Accepter les termes et la politique
                 </label>
               </div>
-              <button type="submit" className="btn btn-primary w-100 mx-auto">
+              <button
+                loading={loading}
+                disabled={!userName || !password || !firstName || !lastName}
+                onClick={handleSubmit}
+                type="submit"
+                className="btn btn-primary w-100 mx-auto"
+              >
                 S'inscrire
               </button>
             </form>

@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { message } from "antd";
 import logoRT from "../assets/images/Link → SVG.png";
+import AuthServices from "../services/authServices";
+import { getErrorMessage } from "../utils/GetError";
 
 export default function Connexion() {
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log("Click btn");
+      setLoading(true);
+      const data = {
+        password,
+        userName,
+      };
+      const response = await AuthServices.loginUser(data);
+      console.log(response.data);
+      localStorage.setItem("hotelAppUser", JSON.stringify(response.data));
+      message.success("Bismil'Lah, aksil'ak diam");
+      navigate("/timeline/cards");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      message.error(getErrorMessage(error));
+    }
+  };
+
   return (
     <div className="auth">
       <div className="container">
@@ -21,11 +52,12 @@ export default function Connexion() {
               <h1 className="fs-5">Connectez-vous en tant que Admin</h1>
               <div class="mb-3 w-100 mx-auto">
                 <input
-                  type="email"
+                  type="text"
                   className="form-control input rounded-0"
                   id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="E-mail"
+                  placeholder="userName"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
               <div className="mb-3 w-100 mx-auto">
@@ -34,6 +66,8 @@ export default function Connexion() {
                   className="form-control input rounded-0"
                   id="exampleInputPassword1"
                   placeholder="Mot de passe"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="mb-3 form-check">
@@ -46,7 +80,13 @@ export default function Connexion() {
                   Garder moi connecté
                 </label>
               </div>
-              <button type="submit" className="btn btn-primary w-100 mx-auto">
+              <button
+                loading={loading}
+                disabled={!userName || !password}
+                onClick={handleSubmit}
+                type="submit"
+                className="btn btn-primary w-100 mx-auto"
+              >
                 Se connecter
               </button>
             </form>

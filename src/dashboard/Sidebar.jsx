@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import user from "../assets/images/user.png";
+import pp from "../assets/images/user.png";
 import logoRT from "../assets/images/Link → SVG.png";
 import MenuItems from "./MenuItems";
+import { getUserDetails } from "../utils/GetUser";
 
 export default function Sidebar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const userDetails = getUserDetails();
+    setUser(userDetails);
+  }, []);
+
   const sidebarMenu1 = [
     {
       MenuItemIcon: "bi-columns-gap",
@@ -20,6 +28,7 @@ export default function Sidebar() {
   ];
   return (
     <div className="h-100 sidebar">
+      {console.log(user)}
       {/* Photo de profil du user _______________________start___ */}
       <div className="d-flex justify-content-center mb-3 mt-2">
         <img src={logoRT} alt="" />
@@ -38,9 +47,11 @@ export default function Sidebar() {
 
       {/* Menu1 de navigation ___________________________start___ */}
       <div className="d-flex pt-3 sidebarProfil">
-        <img src={user} className="my-auto mx-2 homeIMG" alt="profil" />
+        <img src={pp} className="my-auto mx-2 homeIMG" alt="profil" />
         <div className="d-flex flex-column">
-          <h3 className="fs-6">Mouhamet Badiane</h3>
+          <h3 className="fs-6">
+            {user?.firstName} {user?.lastName}
+          </h3>
           <span className="text-secondary">en ligne</span>
         </div>
       </div>
