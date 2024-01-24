@@ -50,7 +50,11 @@ export default function Sidebar() {
         <img src={pp} className="my-auto mx-2 homeIMG" alt="profil" />
         <div className="d-flex flex-column">
           <h3 className="fs-6">
-            {user?.firstName} {user?.lastName}
+            {user && user?.firstName && user?.lastName
+              ? `${user.firstName} ${user.lastName}`
+              : `${user?.userName}`}
+            {/* {user?.firstName && user?.firstName}{" "}
+            {user?.lastName && user?.lastName} */}
           </h3>
           <span className="text-secondary">en ligne</span>
         </div>

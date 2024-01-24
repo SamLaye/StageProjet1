@@ -5,8 +5,17 @@ import user from "../assets/images/user.png";
 import { MdOutlineLogout } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import Input from "../components/formulaire/Input";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const démalCi = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("hotelAppUser");
+    message.success("Baax na, niou fanaan diam!");
+    démalCi("/");
+  };
+
   return (
     <div
       className="row justify-content-between position-fixed z-2 py-2"
@@ -40,7 +49,11 @@ const Navbar = () => {
           <img src={user} className="my-auto mx-2 " alt="profil" id="homeIMG" />
           <span></span>
         </div>
-        <MdOutlineLogout className="text-dark d-flex align-self-center fs-3" />
+        <MdOutlineLogout
+          className="text-dark d-flex align-self-center fs-3"
+          onClick={handleLogout}
+          id="logoutBtn"
+        />
       </div>
       {/* _______________________________________________end_____ */}
     </div>

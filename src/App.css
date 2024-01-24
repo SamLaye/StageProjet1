@@ -84,6 +84,9 @@ input{
   width: 70%;
   background-color: transparent;
 }
+#logoutBtn{
+  cursor: pointer;
+}
 /* ===================SIDEBAR================================ */
 #sidebar-container-parent{
   background-image: url("./assets/images/_before.jpg");

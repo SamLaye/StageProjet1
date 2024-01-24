@@ -28,7 +28,8 @@ export default function Inscription() {
       };
       const response = await AuthServices.registerUser(data);
       console.log(response.data);
-      message.success("Macha'Allah, dallal ak diam");
+      // message.success("Macha'Allah, dallal ak diam");
+      message.success("Register success");
       navigate("/connexion");
     } catch (error) {
       console.log(error);

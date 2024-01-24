@@ -26,7 +26,8 @@ export default function Connexion() {
       const response = await AuthServices.loginUser(data);
       console.log(response.data);
       localStorage.setItem("hotelAppUser", JSON.stringify(response.data));
-      message.success("Bismil'Lah, aksil'ak diam");
+      // message.success("Bismil'Lah, aksil'ak diam");
+      message.success("Connexion success");
       navigate("/timeline/cards");
       setLoading(false);
     } catch (error) {
